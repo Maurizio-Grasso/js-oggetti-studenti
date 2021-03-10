@@ -1,13 +1,19 @@
 :root {
     --color-text: #777;
     --color-primary: rgb(51, 148, 32);
-    --color-secondary: rgba(160, 34, 133,0.75);
+    --color-secondary: red;
 }
 
 body {
     background-color: lightgray;
     font-family: 'Roboto', sans-serif;
 }
+
+/*
+###########
+L A Y O U T
+###########
+*/
 
 .outer-wrapper.flex-wrapper {
     flex-wrap: wrap;
@@ -23,6 +29,13 @@ body {
 .inner-header {
     min-height: 120px;
 }
+
+/*
+########
+SCHEDE
+STUDENTI
+########
+*/
 
 #students-container.flex-wrapper {
     justify-content: space-evenly;
@@ -41,29 +54,6 @@ ul.single-student {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-ul.single-student > li.student-index {
-    display: none;    
-}
-
-ul.single-student:hover > li.student-index {
-    position: absolute;
-    display: block;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background-color: var(--color-secondary);
-    
-    color: white;
-    text-align: center;
-    line-height: 35px;
-    font-size: 1.2em;
-    font-weight: bold;
-    
-    top: var(--standard-spacing);
-    right: var(--standard-spacing);
-
-}
-
 ul.single-student:hover {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
 }
@@ -72,15 +62,64 @@ ul.single-student li {
     margin-bottom: var(--standard-spacing);
 }
 
+/*
+########
+ICONE ON 
+HOVER
+########
+*/
+
+ul.single-student > li.student-index ,
+ul.single-student > li.delete-student {
+    position: absolute;
+    right: var(--standard-spacing);
+
+    width: 35px;
+    height: 35px;
+    
+    line-height: 35px;
+    color: white;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    
+    opacity: 0;
+    border-radius: 50%;
+}
+
+ul.single-student > li.delete-student {
+    top: var(--standard-spacing);
+    
+    font-size: 1.3em;
+    color: var(--color-secondary);    
+    
+    transition: opacity 2s;
+    cursor: pointer;
+}
+
+ul.single-student:hover > li.student-index {
+    bottom: var(--standard-spacing);
+    background-color: var(--color-primary);    
+}
+
+ul.single-student:hover > li.student-index ,
+ul.single-student:hover > li.delete-student {
+    opacity: 1;
+}
+
+/*
+#########
+VARIE ED 
+EVENTUALI
+#########
+*/
+
 h1 {
     font-size: 50px;
     letter-spacing: 5px;
 }
 
 button {
-    border: none;
-    outline: none;
-    cursor: pointer;
     transition: transform 0.2s;
 }
 

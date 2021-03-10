@@ -19,11 +19,7 @@ var arrayStudenti = [
     }
 ];
 
-document.getElementById('students-container').innerHTML = "";   // Reset HTML
-
-for(let i = 0; i < arrayStudenti.length; i++)
-//  Stampa su Html le schede studente preesistenti
-    printStudent(i);
+printStudent('all');
 
 document.getElementById('add-student-button'). addEventListener("click" , function() {
 //  Al click del pulsante "inserisci studente" invoca la relativa funzione newStudent
@@ -31,8 +27,7 @@ document.getElementById('add-student-button'). addEventListener("click" , functi
 });
 
 function newStudent() {
-//  Questa funzione aggiunge una nuova scheda studente
-    
+//  Questa funzione aggiunge una nuova scheda studente    
     var oggettoTmp = {      
         'nome'      : null ,
         'cognome'   : null ,
@@ -50,11 +45,26 @@ function newStudent() {
 function printStudent(posizione) {
 //  Questa funzione stampa una scheda studente nell'Html
 
-    document.getElementById('students-container').innerHTML += '<ul class="single-student" id="single-student-'+(posizione+1)+'"></ul>';
-    
-    for (var key in arrayStudenti[posizione])
-        document.getElementById('single-student-'+(posizione+1)).innerHTML += '<li>'+key+': '+arrayStudenti[posizione][key]+'</li>';
-
-    document.getElementById('single-student-'+(posizione+1)).innerHTML += '<li class="student-index">'+(posizione+1)+'</li>';
-
+    if(posizione == 'all') {
+        document.getElementById('students-container').innerHTML = "";   // Reset HTML
+        
+        for (var i = 0; i< arrayStudenti.length; i++)
+            printStudent(i);
+    }
+    else {
+        document.getElementById('students-container').innerHTML += '<ul class="single-student" id="single-student-'+(posizione+1)+'"></ul>';
+        
+        for (var key in arrayStudenti[posizione]) {
+            document.getElementById('single-student-'+(posizione+1)).innerHTML += '<li><strong>'+key+'</strong>: '+arrayStudenti[posizione][key]+'</li>';        
+        }
+        document.getElementById('single-student-'+(posizione+1)).innerHTML += '<li class="student-index">'+(posizione+1)+'</li>';        
+        document.getElementById('single-student-'+(posizione+1)).innerHTML += '<li class="delete-student" onclick="removeStudent(this)"><i class="fas fa-user-minus"></i></li>';
+    }
 }
+
+function removeStudent(element) {
+    var elementIndex = parseInt(element.previousSibling.innerHTML) - 1; // Posizione dell'elemento (partendo da 0)
+    arrayStudenti.splice((elementIndex) , 1);   //  Rimuove elemento dall'Array
+    printStudent('all');    // Ristampa l'array aggiornato
+}
+

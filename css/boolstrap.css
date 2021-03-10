@@ -47,6 +47,12 @@ ul {
     list-style-type: none;
 }
 
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
 /*
 ######
 Layout
@@ -133,7 +139,7 @@ h3 {
 
 h1 { 
     font-size: 3.5rem; 
-    line-height: 4rem;
+    line-height: 4.5rem;
 }
 
 h2 { 
