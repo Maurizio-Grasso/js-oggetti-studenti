@@ -1,10 +1,12 @@
 :root {
     --color-text: #777;
     --color-primary: rgb(51, 148, 32);
+    --color-secondary: rgba(160, 34, 133,0.75);
 }
 
 body {
     background-color: lightgray;
+    font-family: 'Roboto', sans-serif;
 }
 
 .outer-wrapper.flex-wrapper {
@@ -21,19 +23,68 @@ body {
 .inner-header {
     min-height: 120px;
 }
-.inner-main {
-}
 
 #students-container.flex-wrapper {
     justify-content: space-evenly;
-    align-items: center;
+    align-content: center;
     flex-wrap: wrap;
-
     min-height: calc(100vh - 240px);
 }
 
 ul.single-student {
-    flex-basis: calc(100% / 6 );
+    flex: 0 0 calc(100% / 4 - var(--standard-spacing) );
+    position: relative;
     margin-bottom: 50px;
-    padding: var(--standard-spacing);
+    padding: calc( var(--standard-spacing) *2 ) calc( var(--standard-spacing) *4 ) calc( var(--standard-spacing) *2 );
+
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+ul.single-student > li.student-index {
+    display: none;    
+}
+
+ul.single-student:hover > li.student-index {
+    position: absolute;
+    display: block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+    
+    color: white;
+    text-align: center;
+    line-height: 35px;
+    font-size: 1.2em;
+    font-weight: bold;
+    
+    top: var(--standard-spacing);
+    right: var(--standard-spacing);
+
+}
+
+ul.single-student:hover {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+ul.single-student li {
+    margin-bottom: var(--standard-spacing);
+}
+
+h1 {
+    font-size: 50px;
+    letter-spacing: 5px;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    transform: translate(-50% , -50%) scale(1.05);
 }

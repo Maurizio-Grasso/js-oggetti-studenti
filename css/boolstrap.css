@@ -82,6 +82,12 @@ Spacing
 .padding-b-standard { padding-bottom: var(--standard-spacing);}
 .padding-l-standard { padding-left: var(--standard-spacing);}
 
+.padding-more { padding: calc(var(--standard-spacing) * 2);}
+.padding-t-more { padding-top: calc(var(--standard-spacing) * 2);}
+.padding-r-more { padding-right: calc(var(--standard-spacing) * 2);}
+.padding-b-more { padding-bottom: calc(var(--standard-spacing) * 2);}
+.padding-l-more { padding-left: calc(var(--standard-spacing) * 2);}
+
 .margin-standard { margin: var(--standard-spacing);}
 .margin-t-standard { margin-top: var(--standard-spacing);}
 .margin-r-standard { margin-right: var(--standard-spacing);}

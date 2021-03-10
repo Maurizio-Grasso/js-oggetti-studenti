@@ -1,35 +1,37 @@
 var arrayStudenti = [
-    
+//  Array preesistente contenente 3 schede studenti
     {
-        'nome'      : 'Davide' ,
-        'cognome'   : 'Gandolfi' ,
-        'eta'       :  26
+        'nome'      : 'Stanis' ,
+        'cognome'   : 'LaRochelle' ,
+        'eta'       :  35
     } ,
 
     {
-        'nome'      : 'Giovanna' ,
-        'cognome'   : 'Di Lorenzo' ,
+        'nome'      : 'Corinna' ,
+        'cognome'   : 'Negri' ,
+        'eta'       :  24
+    } ,
+
+    {
+        'nome'      : 'Alessandro' ,
+        'cognome'   : 'Tiberi' ,
         'eta'       :  30
-    } ,
-
-    {
-        'nome'      : 'Alfredo' ,
-        'cognome'   : 'Romanelli' ,
-        'eta'       :  37
     }
 ];
 
 document.getElementById('students-container').innerHTML = "";   // Reset HTML
 
-for(let i = 0; i < arrayStudenti.length; i++) {
+for(let i = 0; i < arrayStudenti.length; i++)
+//  Stampa su Html le schede studente preesistenti
     printStudent(i);
-}
 
-newStudent();
-
-// functions
+document.getElementById('add-student-button'). addEventListener("click" , function() {
+//  Al click del pulsante "inserisci studente" invoca la relativa funzione newStudent
+    newStudent();
+});
 
 function newStudent() {
+//  Questa funzione aggiunge una nuova scheda studente
     
     var oggettoTmp = {      
         'nome'      : null ,
@@ -45,9 +47,14 @@ function newStudent() {
     printStudent((arrayStudenti.length)-1);
 }
 
-function printStudent(indiceArray) {
-    document.getElementById('students-container').innerHTML += '<ul class="single-student" id="single-student-'+(indiceArray+1)+'"></ul>';
+function printStudent(posizione) {
+//  Questa funzione stampa una scheda studente nell'Html
+
+    document.getElementById('students-container').innerHTML += '<ul class="single-student" id="single-student-'+(posizione+1)+'"></ul>';
     
-    for (var key in arrayStudenti[indiceArray])
-        document.getElementById('single-student-'+(indiceArray+1)).innerHTML += '<li>'+key+': '+arrayStudenti[indiceArray][key]+'</li>';
+    for (var key in arrayStudenti[posizione])
+        document.getElementById('single-student-'+(posizione+1)).innerHTML += '<li>'+key+': '+arrayStudenti[posizione][key]+'</li>';
+
+    document.getElementById('single-student-'+(posizione+1)).innerHTML += '<li class="student-index">'+(posizione+1)+'</li>';
+
 }
