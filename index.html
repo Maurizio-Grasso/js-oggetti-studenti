@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Studenti</title>
+    <!-- My Framework -->
+    <link rel="stylesheet" href="css/boolstrap.css">
+    <!-- My Style -->
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
+    <div class="outer-wrapper flex-wrapper text-center bg-white">
+        <header>
+            <div class="inner-header padding-standard bg-primary text-white set-relative">
+                <h1 class="align-x-y">Schede Studenti</h1>
+            </div>
+        </header>
+
+        <main>
+            <div class="inner-main">
+                <div id="students-container" class="flex-wrapper padding-standard text-left text-capitalized">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="inner-footer padding-standard set-relative">
+                <a id="add-student-button" class="btn btn-primary btn-large align-x-y" href="">Inserisci Studente</a>
+            </div>
+        </footer>
+    </div>
     <script src="js/main.js"></script>
 </body>
 </html>

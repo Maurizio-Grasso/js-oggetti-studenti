@@ -1,24 +1,3 @@
-// Milestone #1:
-//
-// Creare un oggetto che descriva uno studente con le
-// seguenti proprietà: nome, cognome e età.
-// Stampare a schermo attraverso il for in tutte le proprietà.
-
-var studente = {
-    'nome'      : 'Marianna' ,
-    'cognome'   : 'Berlinguer' ,
-    'eta'       :  31
-};
-
-for(var key in studente) {
-    console.log(key +": "+ studente[key]);
-}
-
-// Milestone #2
-//
-// Creare un array di oggetti di studenti. Ciclare su tutti gli
-// studenti e stampare per ognuno nome e cognome.
-
 var arrayStudenti = [
     
     {
@@ -40,25 +19,35 @@ var arrayStudenti = [
     }
 ];
 
+document.getElementById('students-container').innerHTML = "";   // Reset HTML
 
-for(var i = 0; i < arrayStudenti.length; i++)
-    console.log(arrayStudenti[i].nome + " "+ arrayStudenti[i].cognome);
+for(let i = 0; i < arrayStudenti.length; i++) {
+    printStudent(i);
+}
 
-// Milestone #3:
-// 
-// Dare la possibilità all’utente attraverso 3 prompt di
-// aggiungere un nuovo oggetto studente inserendo
-// nell’ordine: nome, cognome e età.
+newStudent();
 
-var oggettoTmp = {      
-    'nome'      : null ,
-    'cognome'   : null ,
-    'eta'       : null
-};
+// functions
 
-for(var key in oggettoTmp)
-    oggettoTmp[key] = prompt("Inserisci un valore per il campo '"+key+"':");
+function newStudent() {
+    
+    var oggettoTmp = {      
+        'nome'      : null ,
+        'cognome'   : null ,
+        'eta'       : null
+    };
+    
+    for(var key in oggettoTmp)
+        oggettoTmp[key] = prompt("Inserisci un valore per il campo '"+key+"':");
 
-arrayStudenti.push(oggettoTmp);
+    arrayStudenti.push(oggettoTmp);
+    
+    printStudent((arrayStudenti.length)-1);
+}
 
-console.log(arrayStudenti);
+function printStudent(indiceArray) {
+    document.getElementById('students-container').innerHTML += '<ul class="single-student" id="single-student-'+(indiceArray+1)+'"></ul>';
+    
+    for (var key in arrayStudenti[indiceArray])
+        document.getElementById('single-student-'+(indiceArray+1)).innerHTML += '<li>'+key+': '+arrayStudenti[indiceArray][key]+'</li>';
+}

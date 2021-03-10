@@ -1,0 +1,39 @@
+:root {
+    --color-text: #777;
+    --color-primary: rgb(51, 148, 32);
+}
+
+body {
+    background-color: lightgray;
+}
+
+.outer-wrapper.flex-wrapper {
+    flex-wrap: wrap;
+    align-content: space-between;
+    max-width: 1200px;
+}
+
+.outer-wrapper.flex-wrapper > * {
+    flex: 0 0 100%;
+}
+
+.inner-footer , 
+.inner-header {
+    min-height: 120px;
+}
+.inner-main {
+}
+
+#students-container.flex-wrapper {
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+
+    min-height: calc(100vh - 240px);
+}
+
+ul.single-student {
+    flex-basis: calc(100% / 6 );
+    margin-bottom: 50px;
+    padding: var(--standard-spacing);
+}
